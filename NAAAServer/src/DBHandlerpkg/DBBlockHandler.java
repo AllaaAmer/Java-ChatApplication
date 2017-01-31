@@ -1,12 +1,16 @@
 package DBHandlerpkg;
 
 import DAO.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import oracle.jdbc.driver.OracleDriver;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,11 +36,19 @@ public class DBBlockHandler {
 
     public DBBlockHandler() {
         dBHandler = new DBHandler();
-        pstCreate = dBHandler.getConnection().prepareStatement("insert into \"BLOCK\" (USER_ID,BLOCKER) values( ? ,?)");
-        pstUpdate = dBHandler.getConnection().prepareStatement("update  \"BLOCK\" set USER_ID=? ,BLOCKER=? where ID=?");
-        pstDelete = dBHandler.getConnection().prepareStatement("delete from \"BLOCK\" where USER_ID =? and BLOCKER =?");
-        pstSelectUser = dBHandler.getConnection().prepareStatement("select USER_ID from \"BLOCK\" where BLOCKER=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        pstSelectBlocker = dBHandler.getConnection().prepareStatement("select BLOCKER from \"BLOCK\" where USER_ID=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+         try {
+            
+
+            pstCreate = dBHandler.getConnection().prepareStatement("insert into \"BLOCK\" (USER_ID,BLOCKER) values( ? ,?)");
+            pstUpdate = dBHandler.getConnection().prepareStatement("update  \"BLOCK\" set USER_ID=? ,BLOCKER=? where ID=?");
+            pstDelete = dBHandler.getConnection().prepareStatement("delete from \"BLOCK\" where USER_ID =? and BLOCKER =?");
+            pstSelectUser = dBHandler.getConnection().prepareStatement("select USER_ID from \"BLOCK\" where BLOCKER=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstSelectBlocker = dBHandler.getConnection().prepareStatement("select BLOCKER from \"BLOCK\" where USER_ID=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBFriendsHandler.class.getName()).log(Level.SEVERE, null, ex);
+           
+        }
     }
     
 

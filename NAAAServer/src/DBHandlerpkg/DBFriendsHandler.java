@@ -1,11 +1,16 @@
 package DBHandlerpkg;
 
 import DAO.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import oracle.jdbc.driver.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -31,13 +36,18 @@ public class DBFriendsHandler {
     DBHandler dBHandler;
 
     public DBFriendsHandler() {
-        dBHandler = new DBHandler();
-        rows = 0;
-        pstCreate = dBHandler.getConnection().prepareStatement("insert into \"FRIENDS\" (USER_1,USER_2) values( ? ,?)");
-        pstUpdate = dBHandler.getConnection().prepareStatement("update  \"FRIENDS\" set USER_1=? ,USER_2=? where ID=?");
-        pstDelete = dBHandler.getConnection().prepareStatement("delete from  \"FRIENDS\" where USER_1 =? and USER_2 =?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        pstSelect = dBHandler.getConnection().prepareStatement("select * from  \"FRIENDS\" where USER_1=? AND USER_2=? ", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        pstSelectSingleFriend = dBHandler.getConnection().prepareStatement("select * from  \"FRIENDS\" where USER_1=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        try {
+            dBHandler = new DBHandler();
+            rows = 0;
+            pstCreate = dBHandler.getConnection().prepareStatement("insert into \"FRIENDS\" (USER_1,USER_2) values( ? ,?)");
+            pstUpdate = dBHandler.getConnection().prepareStatement("update  \"FRIENDS\" set USER_1=? ,USER_2=? where ID=?");
+            pstDelete = dBHandler.getConnection().prepareStatement("delete from  \"FRIENDS\" where USER_1 =? and USER_2 =?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstSelect = dBHandler.getConnection().prepareStatement("select * from  \"FRIENDS\" where USER_1=? AND USER_2=? ", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            pstSelectSingleFriend = dBHandler.getConnection().prepareStatement("select * from  \"FRIENDS\" where USER_1=?", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
