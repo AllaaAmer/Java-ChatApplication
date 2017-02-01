@@ -5,14 +5,14 @@
  */
 package DAO;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 /**
  *
  * @author adelz
  */
-public class Notification {
+public class Notification implements Serializable{
 
     private int id;
     private User user;
@@ -30,10 +30,6 @@ public class Notification {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public User getUser() {

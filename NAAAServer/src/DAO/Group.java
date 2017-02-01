@@ -5,13 +5,14 @@
  */
 package DAO;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author adelz
  */
-public class Group {
+public class Group implements Serializable{
 
     private int id;
     private String name;
@@ -29,10 +30,6 @@ public class Group {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
