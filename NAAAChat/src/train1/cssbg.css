@@ -1,0 +1,139 @@
+#ay7aga {
+     -fx-fill: linear-gradient(to bottom , #194d4d, #FFBB29 , #194d4d );
+}
+
+.bgGradient{
+    -fx-background-image: url("bg.jpg");
+     -fx-background-repeat: stretch; 
+     -fx-background-size:cover;
+   
+}
+
+.header {
+    -fx-font: 30px fantasy;
+    -fx-padding: 10px;
+    -fx-margin:10px;
+    -fx-text-fill: #FFBB29;
+    -fx-font-weight: bold;
+}
+
+.node {
+    -fx-font-style: italic;
+   -fx-font-family: fantasy;
+   -fx-text-fill: white;
+   -fx-background-color: #ffdd94;
+   -fx-background-radius: 10, 10, 10, 10;
+}
+
+.flow-pane{
+    -fx-alignment: center;
+    -fx-padding:10px;
+}
+
+.GroupName{
+     -fx-alignment: center;
+}
+
+.GroupList{
+     -fx-alignment: center;
+}
+
+.TextFieldName{
+   -fx-prompt-text-fill: white;
+   -fx-font-style: italic;
+   -fx-font-weight: bold;
+   -fx-font-family: fantasy;
+   -fx-text-fill: white;
+   -fx-background-color: transparent, #194d4d;
+   -fx-color: #194d4d;
+   -fx-opacity: 0.7;
+   -fx-background-radius: 10, 10, 10, 10;
+   -fx-padding:10px;
+}
+
+#checkbox{
+     -fx-font-style: italic;
+   -fx-font-weight: bold;
+   -fx-font-family: fantasy;
+    -fx-text-fill: white;
+}
+
+#GroupNameIMG{
+   -fx-background-image: url("name1.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 10 center;
+}
+
+#LoginEmailIMG{
+   -fx-background-image: url("mail.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+
+
+#LoginPasswordIMG{
+   -fx-background-image: url("password.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+
+#RegisterNameIMG{
+   -fx-background-image: url("name.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+#RegisterCountryIMG{
+   -fx-background-image: url("flag.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+#RegisterGenderIMG{
+   -fx-background-image: url("gender.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+#RegisterMobileIMG{
+   -fx-background-image: url("mobile.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right  10 center;
+}
+.date-picker .text-field {
+    -fx-control-inner-background: #194d4d ;
+    -fx-control-prompt-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-text-fill:white;
+}
+
+.ListViewStyle{
+    -fx-background-color: transparent, #194d4d;
+     -fx-opacity: 0.8;
+   -fx-background-radius: 10, 10, 10, 10;
+}
+
+.buttonGroup{
+    -fx-pref-width: 120px;
+    -fx-background-color: transparent ;
+    -fx-alignment: CENTER;
+    -fx-font: 20px fantasy;
+    -fx-padding: 10px;
+    -fx-margin: 5px;
+    -fx-text-fill: #FFBB29;
+    -fx-font-weight: bold;
+     -fx-background-image: url("arr.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right 10 center;
+}
+
+.buttonLogin{ 
+    -fx-pref-width: 150px;
+    -fx-background-color: #289e90 ;
+    -fx-text-alignment: CENTER;
+    -fx-font: 13px fantasy;
+    -fx-padding: 10px; 
+    -fx-margin:10px;
+    -fx-text-fill: white; 
+    -fx-font-style: italic;
+   -fx-font-weight: bold;
+   -fx-font-family: fantasy;
+    
+}

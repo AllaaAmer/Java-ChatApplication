@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="BorderPane" prefHeight="620.0" prefWidth="900.0" styleClass="bgGradient" stylesheets="@cssbg.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="train1.FXMLRegistrationController">
+    <center>
+        <FlowPane orientation="VERTICAL" prefHeight="459.0" prefWidth="600.0" styleClass="flow-pane" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="467.0" prefWidth="560.0" spacing="20" styleClass="flow-pane">
+                    <HBox spacing="20">                   
+                        <TextField id="RegisterNameIMG" prefHeight="45.0" prefWidth="250.0" promptText="Enter Your First Name " styleClass="TextFieldName" />
+                        <TextField id="RegisterNameIMG" prefHeight="45.0" prefWidth="250.0" promptText="Enter Your Second Name" styleClass="TextFieldName" />
+                    
+                    </HBox>
+                    <HBox spacing="20">                   
+                        <TextField id="LoginEmailIMG" prefHeight="45.0" prefWidth="520.0" promptText="Enter Your Email " styleClass="TextFieldName" />
+                    </HBox>
+                    <HBox spacing="20">                   
+                        <TextField id="LoginPasswordIMG" prefHeight="45.0" prefWidth="250.0" promptText="Enter Your Password " styleClass="TextFieldName" />
+                        <TextField id="LoginPasswordIMG" prefHeight="45.0" prefWidth="250.0" promptText="Enter Confirm Password" styleClass="TextFieldName" />
+                    </HBox>
+                    <HBox spacing="20">   
+                        <ComboBox id="RegisterGenderIMG" fx:id="genderChooser" prefHeight="45.0" prefWidth="250.0" promptText="Choose Gender" styleClass="TextFieldName" />                 
+                        <DatePicker prefHeight="45.0" prefWidth="250.0" promptText="Choose Your BirthDate " styleClass="TextFieldName" />
+                        
+                    </HBox>
+                    <HBox spacing="20">  
+                        <ComboBox id="RegisterCountryIMG" fx:id="countryChooser" prefHeight="45.0" prefWidth="250.0" promptText="Choose Country" styleClass="TextFieldName" /> 
+                        <TextField id="RegisterCountryIMG" prefHeight="45.0" prefWidth="250.0" promptText="Enter Your City " styleClass="TextFieldName" />
+                    </HBox>
+                    <HBox spacing="20">
+                        <TextField id="RegisterMobileIMG" prefHeight="45.0" prefWidth="520.0" promptText="Enter You Mobile Phone" styleClass="TextFieldName" />
+                    </HBox>
+                    <HBox spacing="20" styleClass="GroupList">
+                        <Button fx:id="button" mnemonicParsing="false" onAction="#SignUpAction" styleClass="buttonLogin" text="Sign Up &gt;&gt;" />
+                    </HBox>
+                </VBox>
+            </children>
+        </FlowPane>
+    </center>
+    <top>
+        <VBox prefHeight="127.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
+            <children>
+                <FlowPane prefHeight="74.0" prefWidth="600.0" styleClass="flow-pane">
+                    <children>
+                        <ImageView fitHeight="54.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@reg.png" />
+                            </image>
+                        </ImageView>
+                        <Label prefHeight="43.0" prefWidth="231.0" styleClass="header" text="Register Now " />
+                    </children>
+                </FlowPane>
+                <FlowPane prefHeight="56.0" prefWidth="600.0" styleClass="flow-pane">
+                    <Label fx:id="output" alignment="CENTER" opacity="0.8" prefHeight="28.0" prefWidth="358.0" text="Validation" textAlignment="CENTER" textFill="WHITE">
+                        <font>
+                            <Font name="Arial" size="20.0" />
+                        </font>
+                    </Label>
+                </FlowPane>
+            </children>
+        </VBox>
+    </top>
+</BorderPane>

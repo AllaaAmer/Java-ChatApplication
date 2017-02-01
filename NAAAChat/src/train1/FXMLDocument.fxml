@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" 
+            styleClass="bgGradient" 
+            stylesheets="@cssbg.css"
+            xmlns="http://javafx.com/javafx/8.0.111" 
+            fx:controller="javaproject.train1.FXMLDocumentController">
+   
+    <top>
+        <FlowPane  styleClass="flow-pane" >
+            <children>
+                <ImageView fitHeight="46.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@add group.png" />
+                    </image>
+                </ImageView>
+                <Label prefHeight="17.0" prefWidth="300.0" text="Create Group"  styleClass="header" textAlignment="JUSTIFY" />
+            </children>
+        </FlowPane>
+    </top>
+    <center>
+        <BorderPane  >
+            <top> 
+                <HBox spacing="10" styleClass="GroupName">
+                    <TextField id="GroupNameIMG" prefHeight="30.0" prefWidth="550.0" styleClass="TextFieldName" promptText="Enter Group Name" />
+                </HBox>
+            </top>
+            <center>
+                <HBox spacing="10" styleClass="GroupList" >
+                    <ListView prefHeight="20.0" prefWidth="550.0" styleClass="ListViewStyle" fx:id="listViewOfFriends"/>
+                </HBox>
+            </center>
+        </BorderPane>
+    </center>
+    <bottom>
+        <HBox spacing="20" styleClass="GroupList" >
+            <Button text="Create" styleClass="buttonGroup" />
+        </HBox>
+    </bottom>
+</BorderPane>
+
+
