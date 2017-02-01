@@ -109,18 +109,17 @@ public class DBBlockHandler {
 
     }
 
-    public ArrayList<Integer> selectBlockedUsers(Block block) {
-        ArrayList<Integer> listOfBlockedUsers = new ArrayList();
-        Block b;
+    public ArrayList<User> selectBlockedUsers(User blocker) {
+        ArrayList<User> listOfBlockedUsers = new ArrayList();
         DBUserHandler u=new DBUserHandler();
         try {
-            User blocker = block.getFromUser();
+          //  User blocker = block.getFromUser();
             pstSelectUser.setInt(1, blocker.getId());
 
             rs2 = pstSelectUser.executeQuery();
 
             while (rs2.next()) {
-                listOfBlockedUsers.add(rs2.getInt(1));
+                listOfBlockedUsers.add(u.getSingleUser(rs2.getInt(1)));
             }
 
         } catch (SQLException ex) {
@@ -129,18 +128,17 @@ public class DBBlockHandler {
         return listOfBlockedUsers;
     }
 
-    public ArrayList<Integer> selectBlockers(Block block) {
-         ArrayList<Integer> listOfBlockers= new ArrayList();
-        Block b;
+    public ArrayList<User> selectBlockers(User user) {
+         ArrayList<User> listOfBlockers= new ArrayList();
         DBUserHandler u=new DBUserHandler();
         try {
-            User user = block.getToUser();
+           // User user = block.getToUser();
             pstSelectBlocker.setInt(1, user.getId());
 
             rs3 = pstSelectBlocker.executeQuery();
 
             while (rs3.next()) {
-                listOfBlockers.add(rs3.getInt(1));
+                listOfBlockers.add(u.getSingleUser(rs3.getInt(1)));
             }
 
         } catch (SQLException ex) {
