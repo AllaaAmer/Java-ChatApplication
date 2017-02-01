@@ -30,9 +30,11 @@ public class DBUserHandler {
 
     public boolean addUser(User user) {
         try {
-
-            dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("insert into \"USER\" (FIRST_NAME,LAST_NAME,PASSWORD,EMAIL,GENDER,MOBILE,BIRTHDATE,CITY,COUNTRY,BIO,STATUS,ISOFFLINE,PIC_URL) values('" + user.getfirstName()+ "','" + user.getlastName()+ "','" + user.getPassword() + "','" + user.getMail() + "','" + user.getGender() + "','" + user.getMobile() + "'," + "TO_DATE('" + user.getBirthDate() + "','yyyy/mm/dd')" + ",'" + user.getCity() + "','" + user.getCountry() + "','" + user.getBio() + "','" + user.getStatus() + "','" + user.isOffline() + "','" + user.getPicPath() + "')", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
-
+            if (user.getBirthDate() != null) {
+                dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("insert into \"USER\" (FIRST_NAME,LAST_NAME,PASSWORD,EMAIL,GENDER,MOBILE,BIRTHDATE,CITY,COUNTRY,BIO,STATUS,ISOFFLINE,PIC_URL) values('" + user.getfirstName() + "','" + user.getlastName() + "','" + user.getPassword() + "','" + user.getMail() + "','" + user.getGender() + "','" + user.getMobile() + "'," + "TO_DATE('" + user.getBirthDate() + "','yyyy/mm/dd')" + ",'" + user.getCity() + "','" + user.getCountry() + "','" + user.getBio() + "','" + user.getStatus() + "','" + user.isOffline() + "','" + user.getPicPath() + "')", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            } else {
+                dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("insert into \"USER\" (FIRST_NAME,LAST_NAME,PASSWORD,EMAIL,GENDER,MOBILE,BIRTHDATE,CITY,COUNTRY,BIO,STATUS,ISOFFLINE,PIC_URL) values('" + user.getfirstName() + "','" + user.getlastName() + "','" + user.getPassword() + "','" + user.getMail() + "','" + user.getGender() + "','" + user.getMobile() + "'," + "TO_DATE(" + user.getBirthDate() + ",'yyyy/mm/dd')" + ",'" + user.getCity() + "','" + user.getCountry() + "','" + user.getBio() + "','" + user.getStatus() + "','" + user.isOffline() + "','" + user.getPicPath() + "')", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            }
             rows = dBHandler.getPreparedStatement().executeUpdate();
             if (rows != 0) {
                 return true;
@@ -64,7 +66,12 @@ public class DBUserHandler {
 
     public boolean updateUser(User user) {
         try {
-            dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("update \"USER\" set FIRST_NAME='" + user.getfirstName()+ "',LAST_NAME='" + user.getlastName()+ "',PASSWORD='" + user.getPassword() + "',EMAIL='" + user.getMail() + "',GENDER='" + user.getGender() + "',MOBILE='" + user.getMobile() + "',BIRTHDATE=" + "TO_DATE('" + user.getBirthDate() + "','yyyy/mm/dd')" + ",CITY='" + user.getCity() + "',COUNTRY='" + user.getCountry() + "',BIO='" + user.getBio() + "',STATUS='" + user.getStatus() + "',OFFLINE='" + user.isOffline() + "',PIC_URL='" + user.getPicPath() + "' where ID='" + user.getId() + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            if (user.getBirthDate() != null) {
+                dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("update \"USER\" set FIRST_NAME='" + user.getfirstName() + "',LAST_NAME='" + user.getlastName() + "',PASSWORD='" + user.getPassword() + "',EMAIL='" + user.getMail() + "',GENDER='" + user.getGender() + "',MOBILE='" + user.getMobile() + "',BIRTHDATE=" + "TO_DATE('" + user.getBirthDate() + "','yyyy/mm/dd')" + ",CITY='" + user.getCity() + "',COUNTRY='" + user.getCountry() + "',BIO='" + user.getBio() + "',STATUS='" + user.getStatus() + "',ISOFFLINE=" + user.isOffline() + ",PIC_URL='" + user.getPicPath() + "' where ID='" + user.getId() + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            } else {
+                dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("update \"USER\" set FIRST_NAME='" + user.getfirstName() + "',LAST_NAME='" + user.getlastName() + "',PASSWORD='" + user.getPassword() + "',EMAIL='" + user.getMail() + "',GENDER='" + user.getGender() + "',MOBILE='" + user.getMobile() + "',BIRTHDATE=" + "TO_DATE(" + user.getBirthDate() + ",'yyyy/mm/dd')" + ",CITY='" + user.getCity() + "',COUNTRY='" + user.getCountry() + "',BIO='" + user.getBio() + "',STATUS='" + user.getStatus() + "',ISOFFLINE=" + user.isOffline() + ",PIC_URL='" + user.getPicPath() + "' where ID='" + user.getId() + "'", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            }
+
             rows = dBHandler.getPreparedStatement().executeUpdate();
             if (rows != 0) {
                 return true;
@@ -141,6 +148,29 @@ public class DBUserHandler {
         }
     }
 
+    public boolean checkUserExistance(User user) {
+        boolean check = false;
+        try {
+            dBHandler.setPreparedStatement(dBHandler.getConnection().prepareStatement("select * from \"USER\" where ID=" + user.getId() + "", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY));
+            dBHandler.setResultSet(dBHandler.getPreparedStatement().executeQuery());
+            while (dBHandler.getResultSet().next()) {
+                if (user.getMail() == dBHandler.getResultSet().getString(5)) {
+                    check = true;
+                    break;
+                }
+            }
+            if (check) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public User getSingleUser(String mail) {
         User user = null;
         try {
@@ -162,7 +192,7 @@ public class DBUserHandler {
                 user.setStatus(dBHandler.getResultSet().getString(12));
                 user.setOffline(dBHandler.getResultSet().getInt(13));
                 user.setPicPath(dBHandler.getResultSet().getString(14));
-                
+
             }
             return user;
         } catch (SQLException ex) {

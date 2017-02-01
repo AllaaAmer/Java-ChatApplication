@@ -6,6 +6,7 @@
 package ServerImp;
 
 import DAO.User;
+import DBHandlerpkg.*;
 import Serverpkg.HelloServer;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -15,23 +16,30 @@ import java.rmi.server.UnicastRemoteObject;
  * @author adelz
  */
 public class HelloImplementation extends UnicastRemoteObject implements HelloServer{
-
+DBUserHandler dBUserHandler;
     public HelloImplementation() throws RemoteException{
+        dBUserHandler=new DBUserHandler();
     }
 
     @Override
     public boolean signUp(User user) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(!dBUserHandler.checkUserExistance(user)){
+          return (dBUserHandler.addUser(user));
+        }
+        else
+            return false;
     }
 
     @Override
-    public boolean signIn(User user) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User signIn(User user) throws RemoteException {
+        return dBUserHandler.getSingleUser(user.getMail());
     }
 
     @Override
     public boolean signOut(User user) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        user.setOffline(0);
+         return (dBUserHandler.updateUser(user));
     }
     
 }

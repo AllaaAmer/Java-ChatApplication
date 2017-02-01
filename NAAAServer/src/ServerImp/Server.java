@@ -24,7 +24,7 @@ public class Server {
             
             HelloImplementation obj = new HelloImplementation();
             Registry reg = LocateRegistry.createRegistry(5050);
-            reg.rebind("MVCChat", obj);
+            reg.rebind("Chat", obj);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
