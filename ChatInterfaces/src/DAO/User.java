@@ -24,7 +24,7 @@ public class User {
     private String picPath;
     private int mobile;
     private Date birthDate;
-    private boolean offline;
+    private int offline;
     private String status;
 
     public int getId() {
@@ -128,11 +128,11 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public boolean isOffline() {
+    public int isOffline() {
         return offline;
     }
 
-    public void setOffline(boolean offline) {
+    public void setOffline(int offline) {
         this.offline = offline;
     }
 
