@@ -1,5 +1,6 @@
 package Serverpkg;
 
+import Clientpkg.ClientInterface;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import DAO.*;
@@ -14,13 +15,13 @@ import DAO.*;
  * @author MIDO
  */
 public interface HelloServer extends Remote {
-    //boolean register(ClientInt clientRef)throws RemoteException;
+    boolean register(ClientInterface clientRef)throws RemoteException;
 
     boolean signUp(User user) throws RemoteException;
 
     User signIn(User user) throws RemoteException;
 
     boolean signOut(User user) throws RemoteException;
-    // boolean unRegister(ClientInt clientRef)throws RemoteException;
+    boolean unRegister(ClientInterface clientRef)throws RemoteException;
 
 }
