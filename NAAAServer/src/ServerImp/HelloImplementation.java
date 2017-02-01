@@ -5,6 +5,7 @@
  */
 package ServerImp;
 
+import Clientpkg.ClientInterface;
 import DAO.User;
 import DBHandlerpkg.*;
 import Serverpkg.HelloServer;
@@ -40,6 +41,16 @@ DBUserHandler dBUserHandler;
     public boolean signOut(User user) throws RemoteException {
         user.setOffline(0);
          return (dBUserHandler.updateUser(user));
+    }
+
+    @Override
+    public boolean register(ClientInterface clientRef) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean unRegister(ClientInterface clientRef) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
