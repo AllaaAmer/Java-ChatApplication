@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import java.io.Serializable;
 import javafx.scene.paint.Color;
 
 /**
  *
  * @author Nour
  */
-public class Style implements Serializable{
+public class Style {
         private int size;
         private String fontFamily;
         private String fontWeight;

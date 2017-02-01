@@ -5,19 +5,21 @@
  */
 package DAO;
 
-import java.io.Serializable;
-
 /**
  *
  * @author adelz
  */
-public class Block implements Serializable{
+public class Block {
     private int id;
     private User fromUser;
     private User toUser;
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getFromUser() {

@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author adelz
  */
-public class Message implements Serializable{
+public class Message {
     private User sender;
     private User reciever;
     private Date date;

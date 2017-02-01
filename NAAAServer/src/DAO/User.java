@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author adelz
  */
-public class User implements Serializable{
+public class User {
     private int id;
     private String firstName;
     private String lastName;
@@ -30,6 +29,10 @@ public class User implements Serializable{
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getfirstName() {

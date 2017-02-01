@@ -5,14 +5,13 @@
  */
 package DAO;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author adelz
  */
-public class Category implements Serializable{
+public class Category {
     private int id;
     private User categoryCreator;
     private String creatorUnique;
@@ -31,6 +30,10 @@ public class Category implements Serializable{
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getCategoryCreator() {

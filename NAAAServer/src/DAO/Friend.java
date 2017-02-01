@@ -5,13 +5,11 @@
  */
 package DAO;
 
-import java.io.Serializable;
-
 /**
  *
  * @author adelz
  */
-public class Friend implements Serializable{
+public class Friend {
 
     private int id;
     private User firstUser;
@@ -19,6 +17,10 @@ public class Friend implements Serializable{
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public User getFirstUser() {
